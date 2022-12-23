@@ -1,0 +1,6 @@
+numpy>=1.22.3
+bitstring>=3.1.9
+pyserial>=3.5
+PyYAML>=3.12
+keyboard>=0.13.5
+matplotlib>=3.6.2
