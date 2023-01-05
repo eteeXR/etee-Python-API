@@ -30,10 +30,10 @@
         <img src="https://img.shields.io/badge/docs-etee_Python_API-lightgrey"
             alt="Check our Docs!"></a>
     <a>
-        <img src="https://img.shields.io/github/v/tag/eteexr/etee-Python-API"
+        <img src="https://img.shields.io/badge/release-v.1.0.0--alpha-green"
             alt="Tag for latest stable release"></a>
     <a>
-        <img src="https://img.shields.io/github/license/eteexr/etee-Python-API"
+        <img src="https://img.shields.io/badge/license-Apache 2.0-red"
             alt="License"></a>
 </p>
 
@@ -95,6 +95,27 @@ In this repository, you can access:
 - etee Python API package source code
 - etee Python API example scripts
 - Setup files
+
+With this API, you will be able to retrieve a wide range of [data from the controllers][url-documentation-data]:
+* **Tactile data**: individual finger curling and pressure, trackpad, slider LED, tracker (connection, proximity sensor; no positional tracking) and system button. 
+
+<p align="center">
+  <img width="700" src="./img/etee-controller-sensors.jpg">
+  <br/>
+  <em>Tactile and sensing data from the controller.</em>
+</p>
+
+* **Gestures**: grip, pinch and point gestures.
+
+<p align="center">
+  <img width="700" src="./img/etee-gestures.jpg">
+  <br/>
+  <em>Main etee gestures.</em>
+</p>
+
+* **Inertial Measuring Units (IMU) and 3D rotation**: raw 9-axis IMU data (accelerometer, gyroscope, magnetometer data) and 3D rotation estimations (quaternion, euler angles).
+* **Device State**: right or left hand.
+* **Battery State**: charge level, charge status.
 
 For more information, please, visit our documentation site: 
 [Developer Documentation - etee Python API][url-documentation]
@@ -195,28 +216,6 @@ If you followed the previous steps on installation, you should be able to run an
     ```
 
 ### Further Information
-
-With this API, you will be able to retrieve a wide range of [data from the controllers][url-documentation-data]:
-* **Tactile data**: individual finger curling and pressure, trackpad, slider LED, tracker (connection, proximity sensor; no positional tracking) and system button. 
-
-<p align="center">
-  <img width="700" src="./img/etee-controller-sensors.jpg">
-  <br/>
-  <em>Tactile and sensing data from the controller.</em>
-</p>
-
-* **Gestures**: grip, pinch and point gestures.
-
-<p align="center">
-  <img width="700" src="./img/etee-gestures.jpg">
-  <br/>
-  <em>Main etee gestures.</em>
-</p>
-
-* **Inertial Measuring Units (IMU) and 3D rotation**: raw 9-axis IMU data (accelerometer, gyroscope, magnetometer data) and 3D rotation estimations (quaternion, euler angles).
-* **Device State**: right or left hand.
-* **Battery State**: charge level, charge status.
-
 We also have [quickstart][url-documentation-quickstart] and [more detailed developer guides][url-documentation-api-functions]
 in our documentation page. This might help you understand the different API functionalities and how to integrate them 
 in your custom applications.
