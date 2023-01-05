@@ -65,7 +65,14 @@
         <li><a href="#package-installation-and-venv">Step 2: Package Installation & Environment</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#hardware-setup">Hardware Setup</a></li>
+        <li><a href="#example-scripts">Example Scripts</a></li>
+        <li><a href="#further-information">Further Information</a></li>
+      </ul>
+    </li>
     <li><a href="#contributing">Contributing</a>
       <ul>
         <li><a href="#how-to-contribute">How to Contribute</a></li>
@@ -169,9 +176,13 @@ your Python environment, by using the `setup.py` script.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+### Hardware Setup
+
 To get started, [set up the hardware][url-documentation-setup-hw]. This involves connecting the device dongle to your 
 PC or laptop, and turning ON the controllers. You will know they are connected if the device dongle keeps blinking in 
 the following pattern: pink-pink-blue.
+
+### Example Scripts
 
 If you followed the previous steps on installation, you should be able to run any example scripts.
 
@@ -182,6 +193,29 @@ If you followed the previous steps on installation, you should be able to run an
     ```sh
     python example_script_name.py
     ```
+
+### Further Information
+
+With this API, you will be able to retrieve a wide range of [data from the controllers][url-documentation-data]:
+* **Tactile data**: individual finger curling and pressure, trackpad, slider LED, tracker (connection, proximity sensor; no positional tracking) and system button. 
+
+<p align="center">
+  <img width="700" src="./img/etee-controller-sensors.jpg">
+  <br/>
+  <em>Tactile and sensing data from the controller.</em>
+</p>
+
+* **Gestures**: grip, pinch and point gestures.
+
+<p align="center">
+  <img width="700" src="./img/etee-gestures.jpg">
+  <br/>
+  <em>Main etee gestures.</em>
+</p>
+
+* **Inertial Measuring Units (IMU) and 3D rotation**: raw 9-axis IMU data (accelerometer, gyroscope, magnetometer data) and 3D rotation estimations (quaternion, euler angles).
+* **Device State**: right or left hand.
+* **Battery State**: charge level, charge status.
 
 We also have [quickstart][url-documentation-quickstart] and [more detailed developer guides][url-documentation-api-functions]
 in our documentation page. This might help you understand the different API functionalities and how to integrate them 
@@ -287,6 +321,7 @@ For further support or queries, you can contact us:
 [url-documentation-setup-hw]: https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/setup.html
 [url-documentation-quickstart]: https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/quickstart.html
 [url-documentation-api-functions]: https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/guide.html
+[url-documentation-data]: https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/serial.html#etee-packet-elements
 [url-issues-tab]: https://github.com/eteeXR/etee-Python-API/issues
 [url-python-venv]: https://docs.python.org/3/tutorial/venv.html
 [url-python-package-installation]: https://packaging.python.org/en/latest/tutorials/installing-packages/
