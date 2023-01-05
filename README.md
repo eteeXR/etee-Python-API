@@ -30,7 +30,7 @@
         <img src="https://img.shields.io/badge/docs-etee_Python_API-lightgrey"
             alt="Check our Docs!"></a>
     <a>
-        <img src="https://img.shields.io/badge/release-v.1.0.0--alpha-green"
+        <img src="https://img.shields.io/github/v/tag/eteexr/etee-Python-API"
             alt="Tag for latest stable release"></a>
     <a>
         <img src="https://img.shields.io/badge/license-Apache 2.0-red"
