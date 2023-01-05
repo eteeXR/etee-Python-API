@@ -8,21 +8,19 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  <a href="https://github.com/eteeXR/etee-Python-API">
-    <img src="img/logo-dark-mode.png" alt="Logo" width="200" height="200">
-  </a>
 
-  <p align="center">
-    Official Python API for the eteeController devices.
-    <br />
-    <a href="https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/index.html#"><strong>Explore the docs »</strong></a>
-    <br />
-    <a href="https://github.com/eteeXR/etee-Python-API/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/eteeXR/etee-Python-API/issues">Request Feature</a>
-  </p>
-</div>
+![Logo Dark](./img/logo-banner-dark-mode.png#gh-dark-mode-only)
+![Logo Light](./img/logo-banner-light-mode.png#gh-light-mode-only)
+
+<p align="center">
+   Official Python API for the eteeController devices.
+   <br />
+   <a href="https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/index.html#"><strong>Explore the docs »</strong></a>
+   <br />
+   <a href="https://github.com/eteeXR/etee-Python-API/issues">Report Bug</a>
+   ·
+   <a href="https://github.com/eteeXR/etee-Python-API/issues">Request Feature</a>
+</p>
 
 
 <!-- SHIELDS FOR REPO -->
@@ -264,7 +262,7 @@ This repository was created by the [TG0][url-tg0-website] team, for the [etee][u
 
 Code and documentation authors include:
 - **Dimitri Chikhladze** (API development and documentation)
-- **Pilar Zhang Qiu** (API development, documentation and release)
+- **Pilar Zhang Qiu** (API development, documentation and releases)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
