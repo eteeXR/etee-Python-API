@@ -13,7 +13,7 @@
 ![Logo Light](./img/logo-banner-light-mode.png#gh-light-mode-only)
 
 <p align="center">
-   Official Python API for the eteeController devices.
+   Official Python API for the eteeControllers.
    <br />
    <a href="https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/index.html#"><strong>Explore the docs »</strong></a>
    <br />
@@ -96,13 +96,13 @@ In this repository, you can access:
 - etee Python API example scripts
 - Setup files
 
-With this API, you will be able to retrieve a wide range of [data from the controllers][url-documentation-data]:
+With this API, you will be able to retrieve a wide range of [data from the eteeControllers][url-documentation-data]:
 * **Tactile data**: individual finger curling and pressure, trackpad, slider LED, tracker (connection, proximity sensor; no positional tracking) and system button. 
 
 <p align="center">
   <img width="700" src="./img/etee-controller-sensors.jpg">
   <br/>
-  <em>Tactile and sensing data from the controller.</em>
+  <em>Tactile and sensing data from the eteeController.</em>
 </p>
 
 * **Gestures**: grip, pinch and point gestures.
@@ -110,7 +110,7 @@ With this API, you will be able to retrieve a wide range of [data from the contr
 <p align="center">
   <img width="700" src="./img/etee-gestures.jpg">
   <br/>
-  <em>Main etee gestures.</em>
+  <em>Main eteeController gestures.</em>
 </p>
 
 * **Inertial Measuring Units (IMU) and 3D rotation**: raw 9-axis IMU data (accelerometer, gyroscope, magnetometer data) and 3D rotation estimations (quaternion, euler angles).
@@ -199,8 +199,8 @@ your Python environment, by using the `setup.py` script.
 
 ### Hardware Setup
 
-To get started, [set up the hardware][url-documentation-setup-hw]. This involves connecting the device dongle to your 
-PC or laptop, and turning ON the controllers. You will know they are connected if the device dongle keeps blinking in 
+To get started, [set up the hardware][url-documentation-setup-hw]. This involves connecting the eteeDongle to your 
+PC or laptop, and turning ON the eteeControllers. You will know they are connected if the eteeDongle keeps blinking in 
 the following pattern: pink-pink-blue.
 
 ### Example Scripts
@@ -220,7 +220,7 @@ We also have [quickstart][url-documentation-quickstart] and [more detailed devel
 in our documentation page. This might help you understand the different API functionalities and how to integrate them 
 in your custom applications.
 
-_To learn more about the API and the controller data, visit our [Developer Documentation Site][url-documentation]_
+_To learn more about the API and the eteeController data, visit our [Developer Documentation Site][url-documentation]_
 
 <a href="https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/index.html#">
   <img src="https://img.shields.io/badge/docs-etee Python API-lightgrey"
@@ -305,7 +305,7 @@ Code and documentation authors include:
 
 For any queries or reports about the API, please use the [**Issues tab**][url-issues-tab] in this repository.
 When possible, use an identifier to help us describe your query, report or request. 
-See more at: <a href="###semantic-type-prefixes">Semantic Type Prefixes</a>
+See more at: <a href="#semantic-type-prefixes">Semantic Type Prefixes</a>.
 
 For further support or queries, you can contact us:
 - Support e-mail: [customer@eteexr.com](customer@eteexr.com)
