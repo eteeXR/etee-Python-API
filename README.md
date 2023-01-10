@@ -26,12 +26,12 @@
 <!-- SHIELDS FOR REPO -->
 <br />
 <p align="center">
-    <a href="https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/index.html#">
-        <img src="https://img.shields.io/badge/docs-etee_Python_API-lightgrey"
-            alt="Check our Docs!"></a>
     <a>
         <img src="https://img.shields.io/github/v/tag/eteexr/etee-Python-API"
             alt="Tag for latest stable release"></a>
+    <a>
+        <img src="https://img.shields.io/badge/platform-win--32%20%7C%20win--64-green"
+            alt="Compatible Platforms"></a>
     <a>
         <img src="https://img.shields.io/badge/license-Apache 2.0-red"
             alt="License"></a>
@@ -39,11 +39,14 @@
 
 <!-- SHIELDS FOR SOCIALS -->
 <p align="center">
+    <a href="https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/index.html#">
+        <img src="https://img.shields.io/badge/docs-etee_Python_API-blue"
+            alt="Check our Docs!"></a>
     <a href="https://eteexr.com/">
-        <img src="https://img.shields.io/badge/website-eteexr.com-blue"
+        <img src="https://img.shields.io/badge/website-eteexr.com-white"
             alt="Check our Website!"></a>
     <a href="customer@eteexr.com">
-        <img src="https://img.shields.io/badge/contact-customer%40eteexr.com-blue"
+        <img src="https://img.shields.io/badge/contact-customer%40eteexr.com-white"
             alt="Support e-mail"></a>
     <a href="https://twitter.com/etee_tg0">
         <img src="https://img.shields.io/twitter/follow/etee_tg0?style=social"
@@ -120,6 +123,7 @@ With this API, you will be able to retrieve a wide range of [data from the eteeC
 For more information, please, visit our documentation site: 
 [Developer Documentation - etee Python API][url-documentation]
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
