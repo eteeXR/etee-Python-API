@@ -1,0 +1,218 @@
+total_bytes:
+  data_bytes: 42
+  end_bytes: 2
+
+widgets:
+  # -------------- Finger data --------------
+  # Pinky
+  pinky_pull:
+    bit: [47, 46, 45, 44, 43, 42, 41]
+  pinky_force:
+    bit: [ 183, 182, 181, 180, 179, 178, 177 ]
+  pinky_touched:
+    byte: 5
+    bit: 0
+  pinky_clicked:
+    byte: 0
+    bit: 7
+
+  # Ring
+  ring_pull:
+    bit: [39, 38, 37, 36, 35, 34, 33]
+  ring_force:
+    bit: [ 175, 174, 173, 172, 171, 170, 169 ]
+  ring_touched:
+    byte: 4
+    bit: 0
+  ring_clicked:
+    byte: 0
+    bit: 6
+
+  # Middle
+  middle_pull:
+    bit: [31, 30, 29, 28, 27, 26, 25]
+  middle_force:
+    bit: [ 167, 166, 165, 164, 163, 162, 161 ]
+  middle_touched:
+    byte: 3
+    bit: 0
+  middle_clicked:
+    byte: 0
+    bit: 5
+
+  # Index
+  index_pull:
+    bit: [23, 22, 21, 20, 19, 18, 17]
+  index_force:
+    bit: [ 159, 158, 157, 156, 155, 154, 153 ]
+  index_touched:
+    byte: 2
+    bit: 0
+  index_clicked:
+    byte: 0
+    bit: 4
+
+  # Thumb
+  thumb_pull:
+    bit: [15, 14, 13, 12, 11, 10, 9]
+  thumb_force:
+    bit: [ 151, 150, 149, 148, 147, 146, 145 ]
+  thumb_touched:
+    byte: 1
+    bit: 0
+  thumb_clicked:
+    byte: 0
+    bit: 3
+
+  # -------------- Trackpad data --------------
+  trackpad_x: # Location
+    byte: 6
+  trackpad_y:
+    byte: 7
+
+  trackpad_pull: # Pressure
+    bit: [111, 110, 109, 108, 107, 106, 105]
+  trackpad_force:
+    bit: [ 143, 142, 141, 140, 139, 138, 137 ]
+
+  trackpad_touched: # Touch/Click
+    byte: 0
+    bit: 2
+  trackpad_clicked:
+    byte: 0
+    bit: 1
+
+  # -------------- Slider --------------
+  slider_value: # Y-axis location
+    bit: [79, 78, 77, 76, 75, 74, 73]
+  slider_touched:  # Touch
+    byte: 9
+    bit: 0
+  slider_up_touched:  # Slider Up/Down Buttons
+    byte: 11
+    bit: 5
+  slider_down_touched:
+    byte: 11
+    bit: 6
+
+  # -------------- Proximity sensor (in tracker) --------------
+  tracker_on: # Whether a VR tracker is connected
+    byte: 11
+    bit: 2
+  proximity_value:  # Analog range
+    bit: [71, 70, 69, 68, 67, 66, 65]
+  proximity_touched:  # Touch/Click
+    byte: 8
+    bit: 0
+  proximity_clicked:
+    byte: 11
+    bit: 1
+
+  # -------------- IMU --------------
+  # Accelerometer
+  accel_x:
+    byte: [23, 24]
+    single_value:
+    signed:
+
+  accel_y:
+    byte: [25, 26]
+    single_value:
+    signed:
+
+  accel_z:
+    byte: [27, 28]
+    single_value:
+    signed:
+
+  # Magnetometer
+  mag_x:
+    byte: [29, 30]
+    single_value:
+    signed:
+
+  mag_y:
+    byte: [31, 32]
+    single_value:
+    signed:
+
+  mag_z:
+    byte: [33, 34]
+    single_value:
+    signed:
+
+  # Gyroscope
+  gyro_x:
+    byte: [35, 36]
+    single_value:
+    signed:
+
+  gyro_y:
+    byte: [37, 38]
+    single_value:
+    signed:
+
+  gyro_z:
+    byte: [39, 40]
+    single_value:
+    signed:
+
+  # -------------- Gestures --------------
+  # Grip gesture
+  grip_pull:
+    bit: [87, 86, 85, 84, 83, 82, 81]
+  grip_force:
+    bit: [ 119, 118, 117, 116, 115, 114, 113 ]
+  grip_touched:  # Gestures
+    byte: 10
+    bit: 0
+  grip_clicked:
+    byte: 11
+    bit: 0
+
+  # Pinch with trackpad
+  pinch_trackpad_pull:
+    bit: [ 127, 126, 125, 124, 123, 122, 121 ]
+  pinch_trackpad_clicked:
+    byte: 15
+    bit: 0
+
+  # Pinch with thumb finger
+  pinch_thumbfinger_pull:
+    bit: [ 135, 134, 133, 132, 131, 130, 129 ]
+  pinch_thumbfinger_clicked:
+    byte: 16
+    bit: 0
+
+  # Point where trackpad can be used alongside the gesture. Main point gesture use in VR and XBOX-controller based games.
+  point_independent_clicked:
+    byte: 14
+    bit: 0
+
+  # Point where trackpad must not be touched or clicked. Alternative point.
+  point_exclude_trackpad_clicked:
+    byte: 13
+    bit: 0
+
+  # -------------- Battery --------------
+  battery_level:
+    bit: [103, 102, 101, 100, 99, 98, 97]
+  battery_charging:
+    byte: 11
+    bit: 4
+  battery_charging_complete:
+    byte: 12
+    bit: 0
+
+  # -------------- Others --------------
+  hand: # Controller in right (1) or left (0) hand
+    byte: 11
+    bit: 3
+  system_button:  # System/Power Button
+    byte: 0
+    bit: 0
+  numeric_point:
+    bit: [ 335, 334, 333, 332, 331, 330, 329 ]
+  squeeze:
+    byte: 41
+    bit: 0
