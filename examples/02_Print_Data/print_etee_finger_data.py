@@ -13,6 +13,15 @@ from etee import EteeController
 
 
 def process_finger(dev, finger):
+    """
+    Retrieve the selected device's finger values from the etee driver.
+
+    :param str dev: Selected device hand. Possible values: "left", "right".
+    :param str finger: Selected finger. Possible values: "thumb", "index", "middle", "ring", "pinky".
+    :return: Array containing the selected controller's index finger values: pull pressure, force pressure,
+    touch and click.
+    :rtype: list[Any]
+    """
     finger_pull = finger + "_pull"
     finger_force = finger + "_force"
     finger_touch = finger + "_touched"
@@ -24,6 +33,9 @@ def process_finger(dev, finger):
 
 
 def print_title():
+    """
+    Print CLI graphics for the application title.
+    """
     print("======================================================")
     print(r"        __               ___    ____  ____")
     print(r"  ___  / /____  ___     /   |  / __ \/  _/")
