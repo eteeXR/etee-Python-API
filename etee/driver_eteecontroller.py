@@ -531,7 +531,7 @@ class EteeController:
         :return: Returns true if data has been recently received from both controllers.
         :rtype: bool
         """
-        return (self.get_left is not None) and (self.get_right is not None)
+        return (self._api_data_left is not None) and (self._api_data_right is not None)
 
     def any_hand_on(self):
         """
