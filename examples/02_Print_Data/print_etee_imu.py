@@ -13,6 +13,9 @@ from etee import EteeController
 
 
 def print_title():
+    """
+    Print CLI graphics for the application title.
+    """
     print("======================================================")
     print(r"        __               ___    ____  ____")
     print(r"  ___  / /____  ___     /   |  / __ \/  _/")
@@ -25,6 +28,14 @@ def print_title():
 
 
 def adjust_imu(original_arr, offsets_arr):
+    """
+    Apply offsets to the original array.
+
+    :param list[int] original_arr: Original IMU (i.e. accel, gyro or mag) XYZ array without offsets.
+    :param list[int] offsets_arr: Array of XYZ offsets to be applied to the original array.
+    :return: Adjusted IMU array after applying offsets.
+    :rtype: list[int]
+    """
     adj_arr = [0, 0, 0]
     if original_arr is None or offsets_arr is None:
         pass

@@ -15,6 +15,9 @@ from etee import EteeController
 
 
 def process_right_index():
+    """
+    Retrieve the pressure data for the right index finger from the etee driver. Print the values.
+    """
     right_index_pull = etee.get_index_pull('right')
     right_index_force = etee.get_index_force('right')
     current_time = datetime.now().strftime("%H:%M:%S.%f")

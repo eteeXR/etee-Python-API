@@ -13,6 +13,13 @@ from etee import EteeController
 
 
 def process_slider(dev):
+    """
+    Retrieve the selected device's slider values from the etee driver.
+
+    :param str dev: Selected device hand. Possible values: "left", "right".
+    :return: Array containing the selected controller's slider values: Y-axis position, touch, up and down button values.
+    :rtype: list[Any]
+    """
     slider = [etee.get_slider_value(dev),
               etee.get_slider_touched(dev),
               etee.get_slider_up_button(dev), etee.get_slider_down_button(dev)]
@@ -20,6 +27,9 @@ def process_slider(dev):
 
 
 def print_title():
+    """
+    Print CLI graphics for the application title.
+    """
     print("======================================================")
     print(r"        __               ___    ____  ____")
     print(r"  ___  / /____  ___     /   |  / __ \/  _/")
