@@ -15,6 +15,12 @@ rad2deg_factor = 180/pi
 
 # Ask user to select between left or right controller
 def select_hand():
+    """
+    Request user to select a controller for the application through the CLI.
+
+    :return: Name of the controller selected, either "right" or "left".
+    :rtype: str
+    """
     # Prompt for user to select the hand to print values from
     print("Please, enter what controller hand you would like to print the values from. Valid options: right, left.")
     valid_controllers = ["right", "left"]
@@ -28,6 +34,15 @@ def select_hand():
 
 # This function is called periodically from FuncAnimation
 def animate(i, y_1, y_2, y_3):
+    """
+    Animate the graph functions.
+
+    :param list[int] y_1: Array of last values for the roll angle value.
+    :param list[int] y_2: Array of last values for the pitch angle value.
+    :param list[int] y_3: Array of last values for the yaw angle value.
+    :return: Updated lines with new Y values.
+    :rtype: line, line, line
+    """
     # Retrieve euler angles
     euler_angles_rad = etee.get_euler(device)
 

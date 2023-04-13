@@ -13,16 +13,31 @@ from etee import EteeController
 
 
 def process_left_slider_buttons():
+    """
+    Retrieve the left slider button values from the etee driver.
+
+    :return: Array containing the left controller's slider button values: up and down button states.
+    :rtype: list[bool]
+    """
     left_slider = [etee.get_slider_up_button('left'), etee.get_slider_down_button('left')]
     return left_slider
 
 
 def process_right_slider_buttons():
+    """
+    Retrieve the right slider button values from the etee driver.
+
+    :return: Array containing the right controller's slider button values: up and down button states.
+    :rtype: list[bool]
+    """
     right_slider = [etee.get_slider_up_button('right'), etee.get_slider_down_button('right')]
     return right_slider
 
 
 def print_title():
+    """
+    Print CLI graphics for the application title.
+    """
     print("======================================================")
     print(r"        __               ___    ____  ____")
     print(r"  ___  / /____  ___     /   |  / __ \/  _/")
@@ -35,6 +50,14 @@ def print_title():
 
 
 def check_controller_connection(left_data, right_data):
+    """
+    Check that both controllers are connected. If not, attempt re-connection.
+
+    :param str left_data: Left controller button values from the etee driver. If a controller disconnects, the values in the buffer will reset to None.
+    :param str right_data: Right controller button values from the etee driver. If a controller disconnects, the values in the buffer will reset to None.
+    :return: True if both controllers are still connected; False if otherwise
+    :rtype: bool
+    """
     connection = True
     if left_data[0] == None and right_data[0] == None:
         print("---")
@@ -55,6 +78,7 @@ def check_controller_connection(left_data, right_data):
         time.sleep(0.05)
         connection = False
     return connection
+
 
 if __name__ == "__main__":
     # Initialise the etee driver and find dongle

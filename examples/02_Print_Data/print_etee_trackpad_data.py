@@ -13,6 +13,14 @@ from etee import EteeController
 
 
 def process_trackpad(dev):
+    """
+    Retrieve the selected device's trackpad values from the etee driver.
+
+    :param str dev: Selected device hand. Possible values: "left", "right".
+    :return: Two arrays containing the selected controller's trackpad values. One containing the location
+    (X-axis position, Y-axis position), and another the pressure (pull pressure, force pressure, touch and click).
+    :rtype: list[int], list[Any]
+    """
     loc = [etee.get_data(dev, "trackpad_x"), etee.get_data(dev, "trackpad_y")]
     pressure = [etee.get_data(dev, "trackpad_pull"), etee.get_data(dev, "trackpad_force"),
                 etee.get_data(dev, "trackpad_touched"), etee.get_data(dev, "trackpad_clicked")]
@@ -20,6 +28,9 @@ def process_trackpad(dev):
 
 
 def print_title():
+    """
+    Print CLI graphics for the application title.
+    """
     print("======================================================")
     print(r"        __               ___    ____  ____")
     print(r"  ___  / /____  ___     /   |  / __ \/  _/")
