@@ -118,17 +118,17 @@ class EteeController:
         :type: Event """
 
         self.left_hand_lost = EteeControllerEvent()
-        """Event for losing left controller connection. Occurs when data is not received for more than 0.5 seconds.
+        """Event for losing left controller connection. Occurs when data is not received for more than 1.5 seconds.
         
         :type: Event """
 
         self.right_hand_lost = EteeControllerEvent()
-        """Event for losing right controller connection. Occurs when data is not received for more than 0.5 seconds.
+        """Event for losing right controller connection. Occurs when data is not received for more than 1.5 seconds.
         
         :type: Event """
 
         self.data_lost = EteeControllerEvent()
-        """Event for losing data from both controllers. Occurs when data is not received for more than 0.5 seconds.
+        """Event for losing data from both controllers. Occurs when data is not received for more than 1.5 seconds.
         
         :type: Event """
 
@@ -256,7 +256,6 @@ class EteeController:
         :param dict data: Dictionary of the parsed controller data.
         """
         if data["hand"] == 0:
-            # print(time.time() - self.hand_last_on_left)
             self._api_data_left = data
             self._hand_last_on_left = time.time()
             self._frameno_left += 1
@@ -272,10 +271,10 @@ class EteeController:
 
         self.hand_received.emit()
 
-        if time.time() - self._hand_last_on_left > 0.1 and self._api_data_left is not None:
+        if (time.time() - self._hand_last_on_left) > 1.5 and self._api_data_left is not None:
             self._api_data_left = None
             self.left_hand_lost.emit()
-        if time.time() - self._hand_last_on_right > 0.1 and self._api_data_left is not None:
+        if (time.time() - self._hand_last_on_right) > 1.5 and self._api_data_right is not None:
             self._api_data_right = None
             self.right_hand_lost.emit()
 
@@ -314,8 +313,8 @@ class EteeController:
         """
         if reading is not None:
             return
-        left_lost = time.time() - self._hand_last_on_left > 0.1 and self._api_data_left is not None
-        right_lost = time.time() - self._hand_last_on_right > 0.1 and self._api_data_right is not None
+        left_lost = (time.time() - self._hand_last_on_left) > 1.5 and self._api_data_left is not None
+        right_lost = (time.time() - self._hand_last_on_right) > 1.5 and self._api_data_right is not None
         if left_lost:
             self._api_data_left = None
             self.left_hand_lost.emit()
