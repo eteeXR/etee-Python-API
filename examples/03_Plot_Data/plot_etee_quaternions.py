@@ -13,6 +13,12 @@ from etee import EteeController
 
 # Ask user to select between left or right controller
 def select_hand():
+    """
+    Request user to select a controller for the application through the CLI.
+
+    :return: Name of the controller selected, either "right" or "left".
+    :rtype: str
+    """
     # Prompt for user to select the hand to print values from
     print("Please, enter what controller hand you would like to print the values from. Valid options: right, left.")
     valid_controllers = ["right", "left"]
@@ -26,6 +32,16 @@ def select_hand():
 
 # This function is called periodically from FuncAnimation
 def animate(i, y_1, y_2, y_3, y_4):
+    """
+    Animate the graph functions.
+
+    :param list[int] y_1: Array of last values for the q0 quaternion value.
+    :param list[int] y_2: Array of last values for the q1 quaternion value.
+    :param list[int] y_3: Array of last values for the q2 quaternion value.
+    :param list[int] y_4: Array of last values for the q3 quaternion value.
+    :return: Updated lines with new Y values.
+    :rtype: line, line, line, line
+    """
     # Retrieve euler angles
     quaternions = etee.get_quaternion(device)
 

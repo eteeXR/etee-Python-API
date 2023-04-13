@@ -16,6 +16,12 @@ from etee import EteeController
 
 
 def process_right_index():
+    """
+    Retrieve the pressure data for the right index finger from the etee driver.
+
+    :return: Index finger pull pressure and force pressure, from the right eteeController.
+    :rtype: int, int
+    """
     right_index_pull = etee.get_index_pull('right')
     right_index_force = etee.get_index_force('right')
     return right_index_pull, right_index_force
