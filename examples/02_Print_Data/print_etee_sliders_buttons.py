@@ -6,11 +6,14 @@ This script prints the slider UP/DOWN button values from both eteeControllers, u
 
 import time
 import sys
-import keyboard
+from pynput import keyboard
 from datetime import datetime
 from etee import EteeController
 # -*- coding: utf-8 -*-
 
+def on_press(key):
+    if key == keyboard.Key.esc:
+        return False  # Stop listener
 
 def process_left_slider_buttons():
     """
@@ -94,23 +97,14 @@ if __name__ == "__main__":
         sys.exit("Exiting application...")
 
     print_title()
+    print("Press 'Esc' key to exit the application.")
 
-    # If dongle is connected, print index values
-    while True:
-        # If 'Esc' key is pressed while printing data, stop controller data stream, data loop and exit application
-        if keyboard.is_pressed('Esc'):
-            print("\n'Esc' key was pressed. Exiting application...")
+    # Create a keyboard listener
+    listener = keyboard.Listener(on_press=on_press)
+    listener.start()
 
-            etee.stop_data()  # Stop controller data stream
-            print("Controller data stream stopped.")
-            etee.stop()  # Stop data loop
-            print("Data loop stopped.")
-
-            time.sleep(0.05)
-            sys.exit(0)  # Exit driver
-
-        # Else continue printing controller data
-        else:
+    try:
+        while listener.running:
             current_time = datetime.now().strftime("%H:%M:%S.%f")
             num_dongles_available = etee.get_number_available_etee_ports()
 
@@ -130,11 +124,15 @@ if __name__ == "__main__":
             else:
                 print("---")
                 print(current_time, "Dongle disconnected. Please, re-insert the dongle and re-run the application.")
-
-                etee.stop_data()  # Stop controller data stream
-                print("Controller data stream stopped.")
-                etee.stop()  # Stop data loop
-                print("Data loop stopped.")
-
-                time.sleep(0.05)
-                sys.exit("Exiting application...")
+                break
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        print("\n'Esc' key was pressed or an error occurred. Exiting application...")
+        etee.stop_data()  # Stop controller data stream
+        print("Controller data stream stopped.")
+        etee.stop()  # Stop data loop
+        print("Data loop stopped.")
+        time.sleep(0.05)
+        listener.stop()
+        sys.exit(0)  # Exit driver
