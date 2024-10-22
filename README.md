@@ -218,6 +218,13 @@ If you followed the previous steps on installation, you should be able to run an
     ```sh
     python example_script_name.py
     ```
+### For Linux Users
+
+Run the following command prior to the above steps.
+Assume ACM0 port is used (you can check via `ls /dev | grep ttyACM*`).
+```sh
+sudo chmod 777 /dev/ttyACM0
+```
 
 ### Further Information
 We also have [quickstart][url-documentation-quickstart] and [more detailed developer guides][url-documentation-api-functions]
