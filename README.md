@@ -168,7 +168,7 @@ Unlike *step 2.2*., these steps will install extra dependencies required only wh
 4. This should have created a venv inside your project directory. You can activate it at any time by navigating
 to the directory containing the /venv folder and entering the following command line:
    ```sh
-   .venv\Scripts\activate.bat
+   .\venv\Scripts\activate.bat
    ```
 
 <a name="installing-the-package"></a>
