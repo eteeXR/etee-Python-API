@@ -25,7 +25,7 @@ Classes and methods for eteeController events, communication and data retrieval.
 
 import os
 import time
-
+import platform
 from .tangio_for_etee import TG0Driver, serial_ports, parse_utf8
 from . import Ahrs
 
@@ -168,10 +168,14 @@ class EteeController:
         :return: Success flag - True if the connection is successful, False if otherwise
         :rtype: bool
         """
-        if port[0:3] == 'COM':
-            return self.driver.connect(port)
-        else:
-            raise ValueError("The port value should be of the form 'COMx', where x is the COM port number.")
+        if platform.system() == 'Linux':
+            if port and not port.startswith('/dev/tty'):
+                raise ValueError("The port value should be of the form '/dev/ttyACMx' or '/dev/ttyUSBx', where x is the port number.")
+        else:  # Windows
+            if port and not port.startswith('COM'):
+                raise ValueError("The port value should be of the form 'COMx', where x is the COM port number.")
+
+        return self.driver.connect(port)
 
     def connect(self):
         """

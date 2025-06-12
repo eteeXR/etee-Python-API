@@ -579,17 +579,21 @@ class TG0Driver:
 
         :param bytes command: Command to be sent.
         :param bool sleep: Boolean to toggle a sleep routine before the command is sent. True by default.
-        :return: Read response.
+        :return: Read response or None if the command failed.
         """
         if sleep and self.run_mode:
             self.sleep()
         try:
+            if self.serial_reader is None or self.serial_reader.serial is None:
+                print("Error: Serial connection is not established.")
+                return None
             response = self.serial_reader.send_command(command, *args, **kargs)
         except Exception as e:
             self.sleep_mode = False
-            print("Sending command failed")
-            return
-        self.sleep_mode = False
+            print(f"Sending command failed: {str(e)}")
+            return None
+        finally:
+            self.sleep_mode = False
         return response
 
     def close_connection_at_exit(self):
