@@ -25,6 +25,7 @@ Classes and methods for eteeController events, communication and data retrieval.
 
 import os
 import time
+import threading
 
 from .tangio_for_etee import TG0Driver, serial_ports, parse_utf8
 from . import Ahrs
@@ -232,9 +233,11 @@ class EteeController:
 
     def stop(self):
         """
-        Stops the data loop.
+        Stops the data loop and waits for the background thread to finish cleanly.
         """
         self.driver.stop()
+        if self.driver.thread is not None:
+            self.driver.thread.join(timeout=1)
 
     def start_data(self):
         """
@@ -446,6 +449,85 @@ class EteeController:
         self.update_mag_offset_left()
         self.update_mag_offset_right()
         print("Gyro and magnetometer offsets updated!")
+
+    def _calibrate_gyro_one_side(self, side, num_samples, timeout):
+        """
+        Collects gyro samples for a single controller side and sets its offset.
+
+        :param str side: 'left' or 'right'
+        :param int num_samples: Number of samples to collect.
+        :param int timeout: Maximum seconds to wait before giving up.
+        """
+        get_data = (lambda: self._api_data_left) if side == 'left' else (lambda: self._api_data_right)
+        ahrs = self._ahrs_left if side == 'left' else self._ahrs_right
+
+        gyro_sum = [0.0, 0.0, 0.0]
+        count = 0
+        deadline = time.time() + timeout
+
+        while count < num_samples and time.time() < deadline:
+            data = get_data()
+            if data is not None:
+                gyro_sum[0] += data.get("gyro_x", 0) or 0
+                gyro_sum[1] += data.get("gyro_y", 0) or 0
+                gyro_sum[2] += data.get("gyro_z", 0) or 0
+                count += 1
+            time.sleep(0.001)
+
+        if count > 0:
+            offset = [gyro_sum[i] / count for i in range(3)]
+            ahrs.set_gyro_offset(offset)
+            print(f"{side.capitalize()} gyro offset set: {offset}")
+        else:
+            print(f"{side.capitalize()} controller not connected — skipping {side} gyro calibration.")
+
+    def calibrate_gyro_software(self, num_samples=700, timeout=15):
+        """
+        Performs a software-side gyroscope bias calibration by collecting gyro samples while the
+        controllers are stationary and averaging them into an offset. This compensates for gyro bias
+        when no firmware-stored calibration is available or when it is insufficient.
+        Only calibrates controllers that are currently connected. Controllers that connect later
+        will be automatically calibrated when their connection event fires.
+        Keep connected controllers completely still during calibration.
+
+        :param int num_samples: Number of samples to average. Default is 700 (matches C# implementation).
+        :param int timeout: Maximum seconds to wait for samples before giving up. Default is 15.
+        """
+        print("Software gyro calibration: keep connected controllers completely still...")
+
+        def _run_side(side):
+            self._calibrate_gyro_one_side(side, num_samples, timeout)
+
+        def _on_left_connected():
+            print("Left controller connected — running gyro calibration. Keep it still...")
+            threading.Thread(target=_run_side, args=('left',), daemon=True).start()
+
+        def _on_right_connected():
+            print("Right controller connected — running gyro calibration. Keep it still...")
+            threading.Thread(target=_run_side, args=('right',), daemon=True).start()
+
+        # Register auto-recalibration on future connections
+        self.left_connected.connect(_on_left_connected)
+        self.right_connected.connect(_on_right_connected)
+
+        # Calibrate whichever controllers are already connected now
+        threads = []
+        if self._api_data_left is not None:
+            t = threading.Thread(target=_run_side, args=('left',), daemon=True)
+            threads.append(t)
+            t.start()
+        else:
+            print("Left controller not connected — will calibrate when it connects.")
+        if self._api_data_right is not None:
+            t = threading.Thread(target=_run_side, args=('right',), daemon=True)
+            threads.append(t)
+            t.start()
+        else:
+            print("Right controller not connected — will calibrate when it connects.")
+
+        for t in threads:
+            t.join()
+        print("Software gyro calibration complete.")
 
     # ---------------- Firmware Versions ----------------
     def get_dongle_version(self):
