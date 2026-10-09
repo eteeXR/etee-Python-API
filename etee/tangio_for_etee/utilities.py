@@ -21,6 +21,7 @@ File description:
 Utility methods to retrieve COM port data and perform parsing/decoding.
 
 """
+import platform
 
 from serial.tools import list_ports
 
@@ -66,13 +67,23 @@ def _get_port_info_predicate(vid, pid):
 def serial_ports(vid=None, pid=None):
     """
     Returns the available serial ports.
-    If VID and/or PID values are passed, the method will filter out COM ports that do not meet the VID and/or PID criteria.
+    If VID and/or PID values are passed, the method will filter out ports that do not meet the VID and/or PID criteria.
 
     :param int vid: Device VID to filter. By default, it is None.
     :param int pid: Device PID to filter. By default, it is None.
-    :return: List of available COM ports after VID/PID filtering.
+    :return: List of available ports after VID/PID filtering.
     """
-    return get_ports(_get_port_info_predicate(vid, pid))
+    def port_filter(port_info):
+        if vid is not None and port_info.vid != vid:
+            return False
+        if pid is not None and port_info.pid != pid:
+            return False
+        if platform.system() == 'Linux':
+            return port_info.device.startswith('/dev/ttyACM') or port_info.device.startswith('/dev/ttyUSB')
+        return True
+
+    return [(info.device, info.vid) for info in list_ports.comports() if port_filter(info)]
+
 
 
 # ------------------------- Parse Bytestring -------------------------

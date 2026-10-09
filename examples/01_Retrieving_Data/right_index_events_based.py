@@ -9,11 +9,14 @@ right controller is received by the dongle, and subsequently transmitted to the 
 
 import time
 import sys
-import keyboard
+from pynput import keyboard
 from datetime import datetime
 from etee import EteeController
 
-
+def on_press(key):
+    if key == keyboard.Key.esc:
+        return False  # Stop listener
+    
 def process_right_index():
     """
     Retrieve the pressure data for the right index finger from the etee driver. Print the values.
@@ -39,24 +42,13 @@ if __name__ == "__main__":
         print("---")
         print("No dongle found. Please, insert an etee dongle and re-run the application.")
         sys.exit("Exiting application...")
-
-    while True:
-        # If 'Esc' key is pressed while printing data, stop controller data stream, data loop and exit application
-        if keyboard.is_pressed('Esc'):
-            print("\n'Esc' key was pressed. Exiting application...")
-
-            etee.stop_data()  # Stop controller data stream
-            print("Controller data stream stopped.")
-            etee.stop()  # Stop data loop
-            print("Data loop stopped.")
-
-            time.sleep(0.05)
-            sys.exit(0)  # Exit driver
-
-        # Else continue printing controller data
-        else:
-            # If no data received from controller, retry controller connection
-            # If no dongle is connected, exit application
+    print("Press 'Esc' key to exit the application.")
+    
+    # Create a keyboard listener
+    listener = keyboard.Listener(on_press=on_press)
+    listener.start()
+    try:
+        while listener.running:
             num_dongles_available = etee.get_number_available_etee_ports()
             if num_dongles_available == 0:
                 print("---")
@@ -66,6 +58,16 @@ if __name__ == "__main__":
                 print("Controller data stream stopped.")
                 etee.stop()  # Stop data loop
                 print("Data loop stopped.")
+                break
+            time.sleep(0.05)
 
-                time.sleep(0.05)
-                sys.exit("Exiting application...")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        print("\n'Esc' key was pressed or an error occurred. Exiting application...")
+        etee.stop_data()  # Stop controller data stream
+        print("Controller data stream stopped.")
+        etee.stop()  # Stop data loop
+        print("Data loop stopped.")
+        listener.stop()
+        sys.exit(0)  # Exit driver

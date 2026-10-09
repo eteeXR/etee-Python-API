@@ -4,3 +4,4 @@ pyserial>=3.5
 PyYAML>=3.12
 keyboard>=0.13.5
 matplotlib>=3.6.2
+pynput>=1.7.7
