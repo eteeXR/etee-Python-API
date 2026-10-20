@@ -5,6 +5,8 @@
 
 # Node artifact files
 node_modules/
+.venv-docs/
+docs/build/
 
 # Compiled Java class files
 *.class

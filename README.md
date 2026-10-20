@@ -15,7 +15,7 @@
 <p align="center">
    Official Python API for the eteeControllers.
    <br />
-   <a href="https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/index.html#"><strong>Explore the docs »</strong></a>
+   <a href="https://eteexr.github.io/etee-Python-API/index.html#"><strong>Explore the docs »</strong></a>
    <br />
    <a href="https://github.com/eteeXR/etee-Python-API/issues">Report Bug</a>
    ·
@@ -39,7 +39,7 @@
 
 <!-- SHIELDS FOR SOCIALS -->
 <p align="center">
-    <a href="https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/index.html#">
+    <a href="https://eteexr.github.io/etee-Python-API/index.html#">
         <img src="https://img.shields.io/badge/docs-etee_Python_API-blue"
             alt="Check our Docs!"></a>
     <a href="https://eteexr.com/">
@@ -233,7 +233,7 @@ in your custom applications.
 
 _To learn more about the API and the eteeController data, visit our [Developer Documentation Site][url-documentation]_
 
-<a href="https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/index.html#">
+<a href="https://eteexr.github.io/etee-Python-API/index.html#">
   <img src="https://img.shields.io/badge/docs-etee Python API-lightgrey"
   alt="Check our Docs!">
 </a>
@@ -327,11 +327,11 @@ For further support or queries, you can contact us:
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[url-documentation]: https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/index.html#
-[url-documentation-setup-hw]: https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/setup.html
-[url-documentation-quickstart]: https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/quickstart.html
-[url-documentation-api-functions]: https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/guide.html
-[url-documentation-data]: https://tg0-etee-python-api.readthedocs-hosted.com/en/latest/serial.html#etee-packet-elements
+[url-documentation]: https://eteexr.github.io/etee-Python-API/index.html#
+[url-documentation-setup-hw]: https://eteexr.github.io/etee-Python-API/setup.html
+[url-documentation-quickstart]: https://eteexr.github.io/etee-Python-API/quickstart.html
+[url-documentation-api-functions]: https://eteexr.github.io/etee-Python-API/guide.html
+[url-documentation-data]: https://eteexr.github.io/etee-Python-API/serial.html#etee-packet-elements
 [url-issues-tab]: https://github.com/eteeXR/etee-Python-API/issues
 [url-python-venv]: https://docs.python.org/3/tutorial/venv.html
 [url-python-package-installation]: https://packaging.python.org/en/latest/tutorials/installing-packages/
