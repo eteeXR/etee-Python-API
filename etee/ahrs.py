@@ -90,9 +90,10 @@ class Ahrs:
         """
         self.mag_offset = value
 
-    def update(self, gyroscope, accelerometer, magnetometer):
+    def update_absolute(self, gyroscope, accelerometer, magnetometer):
         """
-        Perform one update step with data from a AHRS sensor array.
+        Perform one update step with data from a AHRS sensor array (gyroscope + accelerometer + magnetometer).
+        NOTE: this function does not have shaky or jittery hands, but it drifts way more.
 
         :param list[float] gyroscope: A three-element array containing the gyroscope data in radians per second.
         :param list[float] accelerometer: A three-element array containing the accelerometer data.
@@ -148,9 +149,10 @@ class Ahrs:
         q += qdot * self.samplePeriod
         self.quaternion = Quaternion(q / norm(q))  # normalise quaternion
 
-    def update_imu(self, gyroscope, accelerometer):
+    def update_relative(self, gyroscope, accelerometer):
         """
-        Perform one update step with data from an IMU sensor array.
+        Perform one update step with data from an IMU sensor array (gyroscope + accelerometer only).
+        NOTE: this function has shaky or jittery hands, but it drifts less.
 
         :param list[float] gyroscope: A three-element array containing the gyroscope data in radians per second.
         :param list[float] accelerometer: A three-element array containing the accelerometer data.
@@ -211,11 +213,11 @@ class Ahrs:
         accelerometer = np.array(accelerometer) * self.accel_sensitivity
 
         if magnetometer is None:
-            self.update_imu(gyroscope, accelerometer)
+            self.update_relative(gyroscope, accelerometer)
         else:
             magnetometer = np.array(magnetometer) - np.array(self.mag_offset)
             magnetometer = magnetometer * np.array(self.mag_sensitivity)
-            self.update(gyroscope, accelerometer, magnetometer)
+            self.update_absolute(gyroscope, accelerometer, magnetometer)
         return self.quaternion
 
     def get_euler(self, gyroscope, accelerometer, magnetometer=None):

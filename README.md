@@ -307,6 +307,7 @@ This repository was created by the [TG0][url-tg0-website] team, for the [etee][u
 Code and documentation authors include:
 - **Dimitri Chikhladze** (API development and documentation)
 - **Pilar Zhang Qiu** (API development, documentation and releases)
+- **Martin(Zhe) Ding** (API development, documentation and releases)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

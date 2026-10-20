@@ -40,8 +40,11 @@ if __name__ == "__main__":
     if num_dongles_available > 0:
         etee.connect()     # Attempt connection to etee dongle
         time.sleep(1)
+        etee.update_imu_offsets()  # Load gyroscope calibration offsets from controllers to reduce yaw drift
         etee.start_data()  # Attempt to send a command to etee controllers to start data stream
         etee.run()         # Start data loop
+        time.sleep(1)      # Wait for data to start flowing
+        etee.calibrate_gyro_software()  # Software gyro calibration for controllers with missing/poor firmware calibration
     else:
         print("No dongle found. Please, insert an etee dongle and re-run the application.")
         sys.exit("Exiting application...")
